@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
+import Blog from "./Blog";
 
-const Blogs = () => {
+const Blogs = ({bookmarkHandler,markasreadHandler}) => {
 
     const [blogs,setBlogs] =useState([])
 
@@ -13,8 +15,11 @@ const Blogs = () => {
 
 
     return (
-        <div>
-            <h3 className="text-center font-bold text-3xl mt-10">Total Blogs:{blogs.length}</h3>
+        <div className="w-2/3">
+            <h3 className="font-bold text-center bg-slate-400 text-black">Total Blogs:{blogs.length}</h3>
+            {
+                blogs.map(blog=><Blog key={blog.id} blog={blog} bookmarkHandler={bookmarkHandler} markasreadHandler={markasreadHandler}></Blog>)
+            }
         </div>
     );
 };
